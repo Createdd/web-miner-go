@@ -3,14 +3,6 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:1d9328249769b3c6195a4863a8408e386912e64742a473cfcc0d2283b07a91d5"
-  name = "github.com/Medium/medium-sdk-go"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "4daca056cf6a3043764ae976e93df7a15829eb8f"
-
-[[projects]]
-  branch = "master"
   digest = "1:36fe9527deed01d2a317617e59304eb2c4ce9f8a24115bcc5c2e37b3aee5bae4"
   name = "github.com/gin-contrib/sse"
   packages = ["."]
@@ -44,6 +36,14 @@
   pruneopts = "UT"
   revision = "0360b2af4f38e8d38c7fce2a9f4e702702d73a39"
   version = "v0.0.3"
+
+[[projects]]
+  branch = "master"
+  digest = "1:1d9328249769b3c6195a4863a8408e386912e64742a473cfcc0d2283b07a91d5"
+  name = "github.com/medium/medium-sdk-go"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "4daca056cf6a3043764ae976e93df7a15829eb8f"
 
 [[projects]]
   digest = "1:03aa6e485e528acb119fb32901cf99582c380225fc7d5a02758e08b180cb56c3"
@@ -81,8 +81,8 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
-    "github.com/Medium/medium-sdk-go",
     "github.com/gin-gonic/gin",
+    "github.com/medium/medium-sdk-go",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1
