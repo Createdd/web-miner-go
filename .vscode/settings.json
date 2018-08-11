@@ -1,8 +1,13 @@
 {
   "go.formatTool": "goimports",
   "editor.formatOnSave": true,
+  "go.lintTool": "revive",
   "go.lintFlags": [
     "-exclude=vendor/...",
     "-config=${workspaceRoot}/config.toml"
-  ]
+  ],
+  "[go]": {
+    "editor.insertSpaces": false,
+    "editor.formatOnSave": false
+  }
 }
