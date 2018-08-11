@@ -3,6 +3,14 @@
 
 [[projects]]
   branch = "master"
+  digest = "1:1d9328249769b3c6195a4863a8408e386912e64742a473cfcc0d2283b07a91d5"
+  name = "github.com/Medium/medium-sdk-go"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "4daca056cf6a3043764ae976e93df7a15829eb8f"
+
+[[projects]]
+  branch = "master"
   digest = "1:36fe9527deed01d2a317617e59304eb2c4ce9f8a24115bcc5c2e37b3aee5bae4"
   name = "github.com/gin-contrib/sse"
   packages = ["."]
@@ -72,6 +80,9 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  input-imports = ["github.com/gin-gonic/gin"]
+  input-imports = [
+    "github.com/Medium/medium-sdk-go",
+    "github.com/gin-gonic/gin",
+  ]
   solver-name = "gps-cdcl"
   solver-version = 1

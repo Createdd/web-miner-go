@@ -32,3 +32,7 @@
 [[constraint]]
   branch = "master"
   name = "github.com/mgechev/revive.git"
+
+[[constraint]]
+  branch = "master"
+  name = "github.com/Medium/medium-sdk-go"
