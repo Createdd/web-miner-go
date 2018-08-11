@@ -1,6 +1,9 @@
 # Vendor folder since all packages are in Gopkg
 /vendor
 
+# Temporary folder created by the fresh package
+/tmp
+
 # Binaries for programs and plugins
 *.exe
 *.exe~

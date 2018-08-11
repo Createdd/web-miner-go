@@ -36,3 +36,7 @@
 [[constraint]]
   branch = "master"
   name = "github.com/Medium/medium-sdk-go"
+
+[[constraint]]
+  branch = "master"
+  name = "github.com/pilu/fresh"
