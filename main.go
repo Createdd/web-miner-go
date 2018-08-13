@@ -2,19 +2,13 @@ package main
 
 import (
 	"fmt"
-	"github.com/gin-gonic/gin"
-	// "fmt"
-	"net/http"
 	"io/ioutil"
+	"net/http"
 	"strings"
-	// "log"
+	"web-miner-go/router"
 )
 
 func main() {
-
-	// fmt.Println("_______________________")
-	// fmt.Println("hello")
-
 	resp, err := http.Get("https://medium.com/@ddcreationstudi/latest?format=json")
 	if err != nil {
 		fmt.Println(err)
@@ -29,21 +23,7 @@ func main() {
 
 	convertedData := strings.Replace(data, "])}while(1);</x>", "", 1)
 
+	router.StartRouter(convertedData)
+
 	fmt.Print(string(convertedData))
-	fmt.Print("_________________")
-	fmt.Print(err, err2)
-
-
-	// Set up router
-	router := gin.Default()
-	router.GET("/", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"test": "works",
-		})
-	})
-	router.GET("/json", func(c *gin.Context) {
-		c.String(200, convertedData)
-	})
-	router.Run(":3000")
-
 }
