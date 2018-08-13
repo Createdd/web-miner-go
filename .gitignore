@@ -4,6 +4,9 @@
 # Temporary folder created by the fresh package
 /tmp
 
+# Bins
+web-miner-go
+
 # Binaries for programs and plugins
 *.exe
 *.exe~

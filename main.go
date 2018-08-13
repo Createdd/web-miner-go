@@ -5,7 +5,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"strings"
-	"web-miner-go/router"
+	"github.com/Createdd/web-miner-go/router"
 )
 
 func main() {
