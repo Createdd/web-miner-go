@@ -16,3 +16,4 @@ COPY --from=builder /go/bin/app /app
 ENTRYPOINT ./app
 LABEL Name=web-miner-go Version=0.0.1
 EXPOSE 3000
+CMD ./app
