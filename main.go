@@ -5,10 +5,17 @@ import (
 	"io/ioutil"
 	"net/http"
 	"strings"
+
 	"github.com/Createdd/web-miner-go/router"
 )
 
 func main() {
+	/**
+	 * Entrypoint for the app.
+	 * Starts server and fetches data from medium.com
+	 * Converts data and supplies to router
+	 * TODO This needs to be split into to comply with clean architecture
+	 */
 	resp, err := http.Get("https://medium.com/@ddcreationstudi/latest?format=json")
 	if err != nil {
 		fmt.Println(err)
