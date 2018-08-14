@@ -1,11 +1,13 @@
 package useCases
 
 import (
-	"github.com/Createdd/web-miner-go/externalInterfaces"
-	// "github.com/Createdd/web-miner-go/entities"
+	// InformationModel "github.com/Createdd/web-miner-go/entities"
 )
 
+type informationUseCase struct {
+
+}
 // PresentInformation shall print hello
 func PresentInformation() {
-	router.StartRouter()
+	// InformationModel
 }

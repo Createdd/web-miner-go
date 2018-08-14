@@ -5,22 +5,9 @@ import (
 	"log"
 	"os"
 
-	"github.com/Createdd/web-miner-go/adapters"
+	adapters "github.com/Createdd/web-miner-go/adapters"
 	"github.com/gin-gonic/gin"
 )
-
-func determineListenAddress() (string, error) {
-	/**
-	 * Get the Port from the environment or return an error.
-	 * This is necessary for successful deplyoments.
-	 * Returns a string or error.
-	 */
-	port := os.Getenv("PORT")
-	if port == "" {
-		return "", fmt.Errorf("$PORT not set")
-	}
-	return ":" + port, nil
-}
 
 // StartRouter creates the router
 func StartRouter() (err error) {
@@ -34,8 +21,7 @@ func StartRouter() (err error) {
 	}
 	log.Printf("Listening on %s...\n", addr)
 
-	data := adapters.FetchInformation("https://medium.com/@ddcreationstudi/latest?format=json")
-	convertedDate := adapters.ParseInformation(data)
+	jsonData := adapters.ProvideInformation()
 
 	router := gin.Default()
 	router.GET("/", func(c *gin.Context) {
@@ -45,8 +31,21 @@ func StartRouter() (err error) {
 	})
 
 	router.GET("/json", func(c *gin.Context) {
-		c.String(200, convertedDate)
+		c.String(200, jsonData)
 	})
 
 	return router.Run(addr)
+}
+
+func determineListenAddress() (string, error) {
+	/**
+	 * Get the Port from the environment or return an error.
+	 * This is necessary for successful deplyoments.
+	 * Returns a string or error.
+	 */
+	port := os.Getenv("PORT")
+	if port == "" {
+		return "", fmt.Errorf("$PORT not set")
+	}
+	return ":" + port, nil
 }
