@@ -2,32 +2,37 @@ package router
 
 import (
 	"fmt"
-	"os"
 	"log"
+	"os"
 
 	"github.com/gin-gonic/gin"
 )
+
 func determineListenAddress() (string, error) {
-  port := os.Getenv("PORT")
-  if port == "" {
-    return "", fmt.Errorf("$PORT not set")
-  }
-  return ":" + port, nil
+	/**
+	 * Get the Port from the environment or return an error.
+	 * This is necessary for successful deplyoments.
+	 * Returns a string or error.
+	 */
+	port := os.Getenv("PORT")
+	if port == "" {
+		return "", fmt.Errorf("$PORT not set")
+	}
+	return ":" + port, nil
 }
 
-// StartRouter starts router
-func StartRouter( data string) {
-
-	fmt.Print("_________________")
-	fmt.Print("works")
-
+// StartRouter creates the router
+func StartRouter(data string) (err error) {
+	/**
+	 * StartRouter runs the router by determining the address to listen for from the PORT
+	 * Set basic GET routes to run the app
+	 */
 	addr, err := determineListenAddress()
-  if err != nil {
-    log.Fatal(err)
+	if err != nil {
+		log.Fatal(err)
 	}
-  log.Printf("Listening on %s...\n", addr)
+	log.Printf("Listening on %s...\n", addr)
 
-	// Set up router
 	router := gin.Default()
 	router.GET("/", func(c *gin.Context) {
 		c.JSON(200, gin.H{
@@ -37,9 +42,6 @@ func StartRouter( data string) {
 	router.GET("/json", func(c *gin.Context) {
 		c.String(200, data)
 	})
-	router.Run(addr)
-	// if err := router.Run((addr, nil); err != nil {
-  //   panic(err)
-  // }
 
+	return router.Run(addr)
 }
