@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 
+	"github.com/Createdd/web-miner-go/adapters"
 	"github.com/gin-gonic/gin"
 )
 
@@ -22,7 +23,7 @@ func determineListenAddress() (string, error) {
 }
 
 // StartRouter creates the router
-func StartRouter(data string) (err error) {
+func StartRouter() (err error) {
 	/**
 	 * StartRouter runs the router by determining the address to listen for from the PORT
 	 * Set basic GET routes to run the app
@@ -33,14 +34,18 @@ func StartRouter(data string) (err error) {
 	}
 	log.Printf("Listening on %s...\n", addr)
 
+	data := adapters.FetchInformation("https://medium.com/@ddcreationstudi/latest?format=json")
+	convertedDate := adapters.ParseInformation(data)
+
 	router := gin.Default()
 	router.GET("/", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"test": "works",
 		})
 	})
+
 	router.GET("/json", func(c *gin.Context) {
-		c.String(200, data)
+		c.String(200, convertedDate)
 	})
 
 	return router.Run(addr)
