@@ -3,14 +3,19 @@ package adapters
 import (
 	fetching "github.com/Createdd/web-miner-go/adapters/fetching"
 	parsing "github.com/Createdd/web-miner-go/adapters/parsing"
-	// "github.com/Createdd/web-miner-go/useCases"
+	useCases "github.com/Createdd/web-miner-go/useCases"
 )
 
 // ProvideInformation shall convert data for further useage
 func ProvideInformation() string {
+	url := "https://medium.com/@ddcreationstudi/latest?format=json";
 
-	data := fetching.FetchInformation("https://medium.com/@ddcreationstudi/latest?format=json")
-	convertedData := parsing.ParseInformation(data)
+	// useCases.FetchAndPresent(url, "JSON")
+
+	fetchFn := fetching.FetchInformation
+	parseFn := parsing.ParseInformation
+
+	convertedData := useCases.FetchAndPresent(url, fetchFn, parseFn)
 
 	return convertedData
 }
